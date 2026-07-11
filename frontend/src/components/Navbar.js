@@ -4,7 +4,10 @@ import { useAuthContext } from "../hooks/useAuthContext"
 
 const Navbar = ()=>{
     const {logout} = useLogout()
-    const {user} = useAuthContext()
+    const { user } = useAuthContext();
+
+console.log(user);
+    
 
     const handleClick = ()=>{
         logout()
