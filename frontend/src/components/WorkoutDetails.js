@@ -6,7 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 const WorkoutDetails = (props) => {
   const {dispatch} = useWorkoutsContext()
   const {user} = useAuthContext()
-  const handleClick = async ()=>{
+  const handleDelete = async ()=>{
     if(!user){
       return
     }
@@ -21,6 +21,18 @@ const WorkoutDetails = (props) => {
       dispatch({type:"DELETE_WORKOUT", payload:json})
     }
   }
+  const handleEdit = async()=>{
+    if(!user){
+      return
+    }
+    const response = await fetch("/api/workouts/" +props.workout._id, {
+      method:"PATCH",
+      headers:{
+        "content-type":"application/json",
+        "Authorization":`Bearer ${user.token}`
+      }
+    })
+  }
   return (
     <div className="workout-details">
       <h4>{props.workout.title}</h4>
@@ -33,7 +45,8 @@ const WorkoutDetails = (props) => {
       <p>
         {formatDistanceToNow(new Date(props.workout.createdAt), {addSuffix:true})}
       </p>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+      <span className="material-symbols-outlined edit" onClick={handleEdit}>edit</span>
+      <span className="material-symbols-outlined delete" onClick={handleDelete}>delete</span>
     </div>
   );
 };

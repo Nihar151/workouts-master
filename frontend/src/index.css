@@ -56,7 +56,17 @@ header a {
   font-size: 0.9em;
   color: #555;
 }
-.workout-details span {
+.workout-details .edit {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.workout-details .delete {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -64,7 +74,6 @@ header a {
   background: #f1f1f1;
   padding: 6px;
   border-radius: 50%;
-  color: #333;
 }
 
 /* new workout form */
