@@ -29,6 +29,10 @@ const WorkoutDetails = (props) => {
     }
   };
   const openModal = () => {
+    console.log(props.workout)
+    setTitle(props.workout.title)
+    setLoad(props.workout.load)
+    setReps(props.workout.reps)
     setIsOpen(true);
   };
   const closeModal = () => {
@@ -99,6 +103,7 @@ const WorkoutDetails = (props) => {
                   Close
                 </button>
               </div>
+              {error && <div className='error'>{error}</div>}
             </form>
           </div>
         </div>
